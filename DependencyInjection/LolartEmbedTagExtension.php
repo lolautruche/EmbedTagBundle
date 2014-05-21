@@ -12,37 +12,18 @@ namespace Lolart\Bundle\EmbedTagBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-class LolartEmbedTagExtension extends Extension implements PrependExtensionInterface
+class LolartEmbedTagExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        // Nothing to do here.
-    }
-
-    /**
-     * Loads embed tag XSL stylesheet in ezpublish configuration.
-     *
-     * @param ContainerBuilder $container
-     */
-    public function prepend( ContainerBuilder $container )
-    {
-        $config = array(
-            'system' => array(
-                'default' => array(
-                    'fieldtypes' => array(
-                        'ezxml' => array(
-                            'custom_tags' => array(
-                                array( 'path' => __DIR__ . '/../Resources/xsl/embed_tag.xsl' )
-                            )
-                        )
-                    )
-                )
-            )
+        $loader = new Loader\YamlFileLoader(
+            $container,
+            new FileLocator( __DIR__ . '/../Resources/config' )
         );
-        $container->prependExtensionConfig( 'ezpublish', $config );
+
+        $loader->load( 'services.yml' );
     }
 }

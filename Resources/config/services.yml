@@ -1,0 +1,32 @@
+parameters:
+    lolart.embedtag.youtube.default_width: 560
+    lolart.embedtag.youtube.default_height: 349
+    lolart.embedtag.dailymotion.default_width: 480
+    lolart.embedtag.dailymotion.default_height: 270
+    lolart.embedtag.vimeo.default_width: 500
+    lolart.embedtag.vimeo.default_height: 281
+    lolart.embedtag.converter.options:
+        youtube:
+            default_width: %lolart.embedtag.youtube.default_width%
+            default_height: %lolart.embedtag.youtube.default_height%
+            embed_pattern: "//www.youtube.com/embed/$$$VIDEO$$$"
+            regexp: "#^https?://www\.youtube\.com/watch\?v=(?P<videoId>[^&]+)#"
+        dailymotion:
+            default_width: %lolart.embedtag.dailymotion.default_width%
+            default_height: %lolart.embedtag.dailymotion.default_height%
+            embed_pattern: "http://www.dailymotion.com/embed/video/$$$VIDEO$$$"
+            regexp: "#^https?://www\.dailymotion\.com/video/(?P<videoId>[^_]+)_.+#"
+        vimeo:
+            default_width: %lolart.embedtag.vimeo.default_width%
+            default_height: %lolart.embedtag.vimeo.default_height%
+            embed_pattern: "http://player.vimeo.com/video/$$$VIDEO$$$"
+            regexp: "#^https?://(www\.)?vimeo\.com/(?P<videoId>[^/?]+)#"
+
+    lolart.embedtag.converter.xmltext.video.class: Lolart\Bundle\EmbedTagBundle\Converter\XmlText\VideoPreConverter
+
+services:
+    lolart.embedtag.converter.xmltext.video:
+        class: %lolart.embedtag.converter.xmltext.video.class%
+        arguments: [%lolart.embedtag.converter.options%]
+        tags:
+            - { name: ezpublish.ezxml.converter }
