@@ -34,4 +34,16 @@
             </iframe>
         </div>
     </xsl:template>
+
+    <xsl:template match="custom[@name='vimeo']">
+        <div class="jvembed jvembed-vimeo">
+            <iframe>
+                <xsl:attribute name="width"><xsl:value-of select="@custom:videoWidth"/></xsl:attribute>
+                <xsl:attribute name="height"><xsl:value-of select="@custom:videoHeight"/></xsl:attribute>
+                <xsl:attribute name="src"><xsl:value-of select="@custom:video"/></xsl:attribute>
+                <xsl:attribute name="frameborder">0</xsl:attribute>
+                <xsl:attribute name="allowfullscreen"/>
+            </iframe>
+        </div>
+    </xsl:template>
 </xsl:stylesheet>
