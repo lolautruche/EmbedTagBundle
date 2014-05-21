@@ -10,6 +10,7 @@
 
 namespace Lolart\Bundle\EmbedTagBundle;
 
+use eZ\Bundle\EzPublishLegacyBundle\LegacyBundles\LegacyBundleInterface;
 use Lolart\Bundle\EmbedTagBundle\DependencyInjection\Compiler\XslRegisterPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -19,11 +20,16 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author Jérôme Vieilledent <lolautruche@gmail.com>
  */
-class LolartEmbedTagBundle extends Bundle
+class LolartEmbedTagBundle extends Bundle implements LegacyBundleInterface
 {
     public function build( ContainerBuilder $container )
     {
         parent::build( $container );
         $container->addCompilerPass( new XslRegisterPass() );
+    }
+
+    public function getLegacyExtensionsNames()
+    {
+        return array( 'jvembedtag' );
     }
 }
