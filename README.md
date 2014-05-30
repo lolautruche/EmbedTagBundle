@@ -1,6 +1,7 @@
 # EmbedTagBundle
 
 eZ Publish 5 bundle providing *custom tags* for **XmlText FieldType**, allowing to embed external content.
+It is compatible with eZ Publish 5.3 / 2014.03 and superior.
 
 ## Features
 Current implementation provides custom tags support for:
