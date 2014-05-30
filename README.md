@@ -36,3 +36,12 @@ public function registerBundles()
 }
 ```
 
+## Usage
+### Edit your rich text content in the admin
+![eZ Online Editor custom tag](/Resources/images/OnlineEditor1.png?raw=true)
+
+![Provide the content's URL](/Resources/images/OnlineEditor2.png?raw=true)
+
+### Enjoy the result!
+![Enjoy the result](/Resources/images/YouTubeResult.png?raw=true)
+
