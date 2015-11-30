@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "~5.3.0|>=2014.03",
+        "ezsystems/ezpublish-kernel": ">=5.3.0|>=2014.03",
         "lolautruche/embedtag-ls": "~1.0"
     },
     "autoload": {
